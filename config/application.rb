@@ -33,5 +33,14 @@ module SurveyAppBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.generators do |g|
+      g.template_engine nil
+      g.test_framework nil
+      g.assets false
+      g.helper false
+      g.stylesheets false
+    end
+
   end
 end
