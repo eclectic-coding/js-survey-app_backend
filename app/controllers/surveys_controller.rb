@@ -1,17 +1,19 @@
 class SurveysController < ApplicationController
-  # Two methods we dont use in API mode
-  # Not rendering form - do not need to use new and edit in controller
+  # Two methods we dont use in API mode - new and edit
   before_action :find_survey, only: %i[show update destroy]
 
   def index
     @surveys = Survey.all
-    render json: @surveys
+    render json: @surveys.to_json(include: {
+      questions: { only: %i[question response] }
+    })
   end
 
   def show
     @survey = Survey.find_by_id(params[:id])
-    render json: @survey
-
+    render json: @survey.to_json(include: {
+      questions: { only: %i[question response] }
+    })
   end
 
   def create
@@ -40,7 +42,7 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:title, :question)
+    params.require(:survey).permit(:title)
   end
 
   def find_survey
