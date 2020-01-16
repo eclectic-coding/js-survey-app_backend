@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_154917) do
 
   create_table "responses", force: :cascade do |t|
     t.bigint "surveys_id"
-    t.string "responses"
+    t.string "responded"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["surveys_id"], name: "index_responses_on_surveys_id"
