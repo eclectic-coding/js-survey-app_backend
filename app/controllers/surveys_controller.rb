@@ -4,16 +4,12 @@ class SurveysController < ApplicationController
 
   def index
     @surveys = Survey.all
-    render json: @surveys.to_json(include: {
-      questions: { only: %i[question response] }
-    })
+    render json: @surveys
   end
 
   def show
     @survey = Survey.find_by_id(params[:id])
-    render json: @survey.to_json(include: {
-      questions: { only: %i[question response] }
-    })
+    render json: @survey
   end
 
   def create
@@ -42,7 +38,7 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:title)
+    params.require(:survey).permit(:title, :question1, :question2, :question3)
   end
 
   def find_survey
