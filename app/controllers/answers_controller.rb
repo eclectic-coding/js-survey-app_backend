@@ -12,6 +12,7 @@ class AnswersController < ApplicationController
   end
 
   def create
+    #@survey = Survey.find_by_id(params[:id])
     @answer = Answer.new(answer_params)
     if @answer.save
       render json: @answer
@@ -31,7 +32,7 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:responded, :id)
+    params.require(:answer).permit!
   end
 
   def find_answer
