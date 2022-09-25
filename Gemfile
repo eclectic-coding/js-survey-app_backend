@@ -20,7 +20,7 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
